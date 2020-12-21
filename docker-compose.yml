@@ -2,10 +2,24 @@ version: "3"
 services:
   web:
     build:
+      # specify where the dockerfile is or docker compose
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - "3000:3000"
+      - "3030:3000"
+    volumes:
+      # does not atempt to map the internal node_modules to the any folder on the
+      # outside
+      - /app/node_modules
+      # map the internal /app folder to an external "." or working directory
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - .:/app
+      # Overwride npm run start
+    command: ["npm", "run", "test"]
+# When we run docker-compose up it will run both services one to run the app other to run tests
