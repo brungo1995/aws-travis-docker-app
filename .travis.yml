@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+# Build testing container
+before_install:
+  - docker build -t brungo1995/test-container -f .
+
+# Run Tests
+script:
+  - docker run -e CI=true brungo1995/test-container npm test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "af-south-1"
+  app: "aws-travis-docker-app"
+  env: "AwsTravisDockerApp-env"
+  bucket_name: "elasticbeanstalk-af-south-1-818961183844"
+  bucket_path: "aws-travis-docker-app"
+  on:
+    branch: master
