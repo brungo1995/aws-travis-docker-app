@@ -10,14 +10,15 @@ before_install:
 # Run Tests
 script:
   - docker run -e CI=true brungo1995/test-container npm run test -- --coverage
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "af-south-1"
-#   app: "aws-travis-docker-app"
-#   env: "AwsTravisDockerApp-env"
-#   bucket_name: "elasticbeanstalk-af-south-1-818961183844"
-#   bucket_path: "aws-travis-docker-app"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "af-south-1"
+  app: "aws-travis-docker-app"
+  env: "AwsTravisDockerApp-env"
+  bucket_name: "elasticbeanstalk-af-south-1-818961183844"
+  bucket_path: "aws-travis-docker-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
