@@ -15,9 +15,10 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React With Edvlado
         </a>
       </header>
+
     </div>
   );
 }
