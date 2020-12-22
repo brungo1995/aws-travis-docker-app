@@ -1,5 +1,5 @@
 # Everything bellow the From command will be know as builder
-FROM node:alpine 
+FROM node:13.12.0-alpine 
 # FROM node:13.12.0-alpine 
 WORKDIR /app
 # COPY package.json .
