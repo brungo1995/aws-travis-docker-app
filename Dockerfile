@@ -2,6 +2,8 @@
 FROM node:13.12.0-alpine as builder
 WORKDIR /app
 COPY package.json .
+# this suposedily solves the deployment issue with AWS
+RUN npm config set unsafe-perm true
 RUN npm install
 COPY . .
 RUN npm run build

@@ -23,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+// echo 'export PATH="/Users/nano/.ebcli-virtual-env/executables:$PATH"'
